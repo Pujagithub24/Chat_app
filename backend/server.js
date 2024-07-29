@@ -10,7 +10,9 @@ import userRoutes from "./routes/user.routes.js";
 import { connect } from "mongoose";
 import connectToMongoDb from "./db/connectToMongoDb.js";
 
-const app = express();
+import { app, server } from "./socket/socket.js";
+
+// const app = express();
 const PORT = process.env.PORT || 5000;
 
 dotenv.config();    
@@ -28,7 +30,7 @@ app.use("/api/users",userRoutes);
 // });
 
 
-app.listen(PORT , () => {
+server.listen(PORT , () => {
     connectToMongoDb();
     console.log(`Server running on port ${PORT}`)
 });
